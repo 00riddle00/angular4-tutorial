@@ -1,1 +1,23 @@
-/home/dotfiles/cmd/.gitconfig
+[user]
+	email = tomas.giedraitis@metasite.net
+	name = tomasg
+[core]
+	editor = vim
+[credential]
+	helper = cache --timeout=3600
+[merge]
+        tool = vimdiff
+[diff]
+        tool = vimdiff
+[difftool]
+        prompt = false
+[alias]
+  # e.g. git graphviz --first-parent master | dotty /dev/stdin
+        graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+  # Pretty log
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
