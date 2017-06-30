@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
-
 @Component({
   selector: 'my-heroes',
-    templateUrl: './heroes.component.html',
-    styleUrls: [ './heroes.component.css' ]
+  templateUrl: './heroes.component.html',
+  styleUrls: [ './heroes.component.css' ]
 })
-
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
 
   constructor(
-	  private router: Router,
-	  private heroService: HeroService) { }
+    private router: Router,
+    private heroService: HeroService) { }
 
   getHeroes(): void {
-	this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
   }
 
   ngOnInit(): void {
@@ -31,7 +30,13 @@ export class HeroesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-	this.router.navigate(['/detail', this.selectedHero.id]);
+    this.router.navigate(['/detail', this.selectedHero.id]);
   }
 }
 
+
+/*
+Copyright 2017 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
